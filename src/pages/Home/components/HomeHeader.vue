@@ -1,16 +1,21 @@
 <template>
   <div class="header">
-    <div class="header-left">
-      <img src="@/assets/arrow-left.png" alt="" />
-    </div>
+    <router-link to="/">
+      <div class="header-left">
+        <img src="@/assets/home.svg" alt="" />
+      </div>
+    </router-link>
+
     <div class="header-input">
       <img src="@/assets/search.png" alt="" />
       <input type="text" placeholder="输入城市/景点/游玩主题" />
     </div>
-    <div class="header-right">
-      <span>{{ this.city }}</span>
-      <img src="@/assets/arrow-down.png" alt="" />
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        <span>{{ this.city }}</span>
+        <img src="@/assets/arrow-down.png" alt="" />
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -43,6 +48,7 @@ export default {
     padding: 0 5px;
     img {
       transform: scale(0.8);
+      font-weight: 800;
     }
   }
 
@@ -60,6 +66,7 @@ export default {
     input {
       flex: 1;
       margin-left: 5px;
+      color: #666;
     }
   }
   .header-right {
