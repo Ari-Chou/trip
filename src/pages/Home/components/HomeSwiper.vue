@@ -37,16 +37,16 @@ export default {
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
+.wrapper >>> .swiper-pagination-bullet-active {
+  background: white;
+}
 .wrapper {
   height: 25vw;
   width: 100%;
   background: lightgrey;
   img {
     width: 100%;
-  }
-  .swiper-pagination-bullet-active {
-    background: white;
   }
 }
 </style>

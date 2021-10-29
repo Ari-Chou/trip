@@ -88,14 +88,17 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/global-styles/color.scss";
+@import "@/global-styles/mixin.scss";
+
+.icon-wrapper >>> .swiper-container {
+  height: 100%;
+}
 .icons-wrapper {
   width: 100%;
   height: 50vw;
-  .swiper-container {
-    height: 100%;
-  }
+
   .icon-wrapper {
     height: 25vw;
     width: 25vw;
@@ -111,9 +114,7 @@ export default {
       margin-top: 5px;
       width: 100%;
       text-align: center;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      @include ellipsis();
     }
   }
   .container {

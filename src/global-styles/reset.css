@@ -45,6 +45,8 @@ kbd,
 samp {
   line-height: 1.5;
   font-family: tahoma, arial, "Hiragino Sans GB", simsun, sans-serif;
+
+  box-sizing: border-box;
 }
 h1,
 h2,
