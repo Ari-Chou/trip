@@ -8,7 +8,7 @@
       <input type="text" placeholder="输入城市/景点/游玩主题" />
     </div>
     <div class="header-right">
-      <span>城市</span>
+      <span>{{ this.city }}</span>
       <img src="@/assets/arrow-down.png" alt="" />
     </div>
   </div>
@@ -17,6 +17,9 @@
 <script>
 export default {
   name: "HomeHeaer",
+  props: {
+    city: String,
+  },
   data() {
     return {
       search: "",

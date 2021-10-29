@@ -1,0 +1,93 @@
+{
+  "ret": true,
+  "data": {
+    "city": "北京",
+    "swiperList": [
+      {
+        "id": 1,
+        "imageUrl": "https://dimg04.c-ctrip.com/images/0zg3b1200092vts6p023D.jpg"
+      },
+      {
+        "id": 2,
+        "imageUrl": "https://dimg04.c-ctrip.com/images/0zg6m1200092vzw0eCED1.jpg"
+      }
+    ],
+    "iconList": [
+      {
+        "id": 1,
+        "name": "机票",
+        "imageUrl": "//gw.alicdn.com/tfs/TB1Nq50tqL7gK0jSZFBXXXZZpXa-210-171.png_570x10000.jpg"
+      },
+      {
+        "id": 2,
+        "name": "酒店",
+        "imageUrl": "//gw.alicdn.com/tfs/TB1n256tAL0gK0jSZFxXXXWHVXa-210-171.png_570x10000.jpg"
+      },
+      {
+        "id": 3,
+        "name": "火车票",
+        "imageUrl": "//gw.alicdn.com/tfs/TB1_Ie3tEz1gK0jSZLeXXb9kVXa-210-171.png_570x10000.jpg"
+      },
+      {
+        "id": 4,
+        "name": "汽车票",
+        "imageUrl": "//gw.alicdn.com/tfs/TB1v9m8tAT2gK0jSZFkXXcIQFXa-210-171.png_570x10000.jpg"
+      },
+      {
+        "id": 5,
+        "name": "门票",
+        "imageUrl": "//gw.alicdn.com/tfs/TB1OIC3tvb2gK0jSZK9XXaEgFXa-210-171.png_570x10000.jpg"
+      }
+    ],
+    "recommendList": [
+      {
+        "id": 1,
+        "imageUrl": "//gw.alicdn.com/bao/uploaded/i4/2856437246/O1CN01janwqw23OiYkfnwZS_!!2856437246.jpg_790x10000Q75.jpg_.webp",
+        "title": "上海门票",
+        "desc": "[武汉周边度假]湖北天屿湖假日酒店+自助早餐/可单订温泉",
+        "price": "¥250",
+        "numberOfBuy": "100人购买"
+      },
+      {
+        "id": 2,
+        "imageUrl": "//gw.alicdn.com/bao/uploaded/i4/2856437246/O1CN01janwqw23OiYkfnwZS_!!2856437246.jpg_790x10000Q75.jpg_.webp",
+        "title": "上海门票",
+        "desc": "[武汉周边度假]湖北天屿湖假日酒店+自助早餐/可单订温泉",
+        "price": "¥250",
+        "numberOfBuy": "100人购买"
+      }
+    ],
+    "weekendList": [
+      {
+        "id": "0001",
+        "imgUrl": "http://img1.qunarzz.com/sight/source/1510/6e/1ea71e2f04e.jpg_r_640x214_aa6f091d.jpg",
+        "title": "北京温泉排行榜",
+        "desc": "细数北京温泉，温暖你的冬天"
+      },
+      {
+        "id": "0002",
+        "imgUrl": "http://img1.qunarzz.com/sight/source/1505/aa/7baaf8a851d221.jpg_r_640x214_1431200f.jpg",
+        "title": "北京必游TOP10",
+        "desc": "来北京必去的景点非这些地方莫属"
+      },
+      {
+        "id": "0003",
+        "imgUrl": "http://img1.qunarzz.com/sight/source/1505/9e/21df651e19af5d.jpg_r_640x214_3ea5bb38.jpg",
+        "title": "寻找北京的皇城范儿",
+        "desc": "数百年的宫廷庙宇，至今依旧威严霸气"
+      },
+      {
+        "id": "0004",
+        "imgUrl": "http://img1.qunarzz.com/sight/source/1505/ce/bc89bc2f0e33ea.jpg_r_640x214_3e408453.jpg",
+        "title": "学生最爱的博物馆",
+        "desc": "周末干嘛？北京很多博物馆已经免费开放啦"
+      },
+      {
+        "id": "0005",
+        "imgUrl": "http://img1.qunarzz.com/sight/source/1505/b2/fde1bfcd057a52.jpg_r_640x214_bbf3fa44.jpg",
+        "title": "儿童剧场，孩子的乐园",
+        "desc": "带宝贝观看演出，近距离体验艺术的无穷魅力"
+      }
+    ]
+  }
+}

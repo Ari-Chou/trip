@@ -1,18 +1,15 @@
 <template>
   <div>
     <div class="weekend-title">周末去哪玩儿</div>
-    <div class="weekend-container">
+    <div class="weekend-container" v-for="item of list" :key="item.id">
       <div class="content-wrapper">
         <div class="image-wrapper">
-          <img
-            src="//dimg11.c-ctrip.com/images/hotel/1000/10/d185c983e00945e1b9037ce5fa7528e3_R_300_120.jpg"
-            alt=""
-          />
+          <img :src="item.imgUrl" alt="" />
         </div>
         <div class="detail-wrapper">
-          <p class="title">乌兰察布 | 跟团游</p>
+          <p class="title">{{ item.title }}</p>
           <p class="desc">
-            乌兰察布乌兰哈达火山地质公园0购物纯玩1日游+宇航服拍摄
+            {{ item.desc }}
           </p>
         </div>
       </div>
@@ -23,6 +20,9 @@
 <script>
 export default {
   name: "HomeWeekend",
+  props: {
+    list: Array,
+  },
 };
 </script>
 

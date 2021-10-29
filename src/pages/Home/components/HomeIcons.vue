@@ -14,68 +14,15 @@
 </template>
 
 <script>
-const iconList = [
-  {
-    id: 1,
-    name: "机票",
-    imageUrl:
-      "//gw.alicdn.com/tfs/TB1Nq50tqL7gK0jSZFBXXXZZpXa-210-171.png_570x10000.jpg",
-  },
-  {
-    id: 2,
-    name: "酒店",
-    imageUrl:
-      "//gw.alicdn.com/tfs/TB1n256tAL0gK0jSZFxXXXWHVXa-210-171.png_570x10000.jpg",
-  },
-  {
-    id: 3,
-    name: "火车票",
-    imageUrl:
-      "//gw.alicdn.com/tfs/TB1_Ie3tEz1gK0jSZLeXXb9kVXa-210-171.png_570x10000.jpg",
-  },
-  {
-    id: 4,
-    name: "汽车票",
-    imageUrl:
-      "//gw.alicdn.com/tfs/TB1v9m8tAT2gK0jSZFkXXcIQFXa-210-171.png_570x10000.jpg",
-  },
-  {
-    id: 5,
-    name: "门票",
-    imageUrl:
-      "//gw.alicdn.com/tfs/TB1OIC3tvb2gK0jSZK9XXaEgFXa-210-171.png_570x10000.jpg",
-  },
-
-  {
-    id: 6,
-    name: "机票",
-    imageUrl:
-      "//gw.alicdn.com/tfs/TB1Nq50tqL7gK0jSZFBXXXZZpXa-210-171.png_570x10000.jpg",
-  },
-  {
-    id: 7,
-    name: "酒店",
-    imageUrl:
-      "//gw.alicdn.com/tfs/TB1n256tAL0gK0jSZFxXXXWHVXa-210-171.png_570x10000.jpg",
-  },
-  {
-    id: 8,
-    name: "火车票火车票火车票火车票火车票",
-    imageUrl:
-      "//gw.alicdn.com/tfs/TB1_Ie3tEz1gK0jSZLeXXb9kVXa-210-171.png_570x10000.jpg",
-  },
-];
 export default {
   name: "HomeIcons",
-  data() {
-    return {
-      iconList: iconList,
-    };
+  props: {
+    list: [],
   },
   computed: {
     pages: function () {
       const pages = [];
-      this.iconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8);
         if (!pages[page]) {
           pages[page] = [];

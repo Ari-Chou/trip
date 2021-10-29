@@ -2,7 +2,7 @@
   <div class="total">
     <div class="title">热销推荐</div>
     <div class="wrapper">
-      <div class="card" v-for="item of recommendList" :key="item.id">
+      <div class="card" v-for="item of list" :key="item.id">
         <div class="card-image">
           <img
             src="//gw.alicdn.com/bao/uploaded/i4/2856437246/O1CN01janwqw23OiYkfnwZS_!!2856437246.jpg_790x10000Q75.jpg_.webp"
@@ -32,29 +32,8 @@
 <script>
 export default {
   name: "Recommend",
-  data() {
-    return {
-      recommendList: [
-        {
-          id: 1,
-          imageUrl:
-            "//gw.alicdn.com/bao/uploaded/i4/2856437246/O1CN01janwqw23OiYkfnwZS_!!2856437246.jpg_790x10000Q75.jpg_.webp",
-          title: "上海门票",
-          desc: "[武汉周边度假]湖北天屿湖假日酒店+自助早餐/可单订温泉",
-          price: "¥250",
-          numberOfBuy: "100人购买",
-        },
-        {
-          id: 2,
-          imageUrl:
-            "//gw.alicdn.com/bao/uploaded/i4/2856437246/O1CN01janwqw23OiYkfnwZS_!!2856437246.jpg_790x10000Q75.jpg_.webp",
-          title: "上海门票",
-          desc: "[武汉周边度假]湖北天屿湖假日酒店+自助早餐/可单订温泉",
-          price: "¥250",
-          numberOfBuy: "100人购买",
-        },
-      ],
-    };
+  props: {
+    list: Array,
   },
 };
 </script>
