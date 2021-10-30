@@ -5,8 +5,12 @@
       v-bind:currentLocation="currentCity"
       :hotCities="hotCities"
       :cities="cities"
+      :letter="letter"
     ></city-list>
-    <alphabet v-bind:cities="cities"></alphabet>
+    <alphabet
+      v-bind:cities="cities"
+      v-on:change="handleAlphabetClick"
+    ></alphabet>
   </div>
 </template>
 
@@ -27,6 +31,7 @@ export default {
       currentCity: "",
       hotCities: [],
       cities: {},
+      letter: "",
     };
   },
   methods: {
@@ -38,6 +43,9 @@ export default {
         this.hotCities = cityInfo.data.hotCities;
         this.cities = cityInfo.data.cities;
       }
+    },
+    handleAlphabetClick(letter) {
+      this.letter = letter;
     },
   },
   mounted() {

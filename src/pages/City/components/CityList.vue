@@ -15,7 +15,7 @@
           </li>
         </ul>
       </div>
-      <div class="area" v-for="(city, key) in cities" :key="key">
+      <div class="area" v-for="(city, key) in cities" :key="key" :ref="key">
         <div class="title">{{ key }}</div>
         <ul class="all-list">
           <li v-for="inner in city" :key="inner.id">{{ inner.name }}</li>
@@ -34,9 +34,19 @@ export default {
     currentLocation: String,
     hotCities: Array,
     cities: Object,
+    letter: String,
   },
   mounted() {
     this.scroll = new BetterScroll(this.$refs.wrapper, { click: true });
+  },
+  watch: {
+    letter() {
+      if (this.letter) {
+        const element = this.$refs[this.letter][0];
+        this.scroll.scrollToElement(element);
+        console.log(element);
+      }
+    },
   },
 };
 </script>
