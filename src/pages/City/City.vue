@@ -1,6 +1,6 @@
 <template>
   <div>
-    <city-header></city-header>
+    <city-header v-bind:cities="cities"></city-header>
     <city-list
       v-bind:currentLocation="currentCity"
       :hotCities="hotCities"

@@ -1,18 +1,72 @@
 <template>
-  <div class="header">
-    <div class="header-input">
-      <img src="@/assets/search.png" alt="" />
-      <input type="text" placeholder="城市｜地区｜国家" />
+  <div>
+    <div class="header">
+      <div class="header-input">
+        <img src="@/assets/search.png" alt="" />
+        <input type="text" placeholder="城市｜地区｜国家" v-model="keywords" />
+      </div>
+      <router-link to="/">
+        <div class="header-cancel">取消</div>
+      </router-link>
     </div>
-    <router-link to="/">
-      <div class="header-cancel">取消</div>
-    </router-link>
+    <div class="search-content" ref="list" v-show="keywords">
+      <ul>
+        <li class="search-item" v-for="city in list" :key="city.id">
+          {{ city.name }}
+        </li>
+        <li class="search-item" v-show="hasNoData">未找到搜索目的地</li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
+import BetterScroll from "better-scroll";
 export default {
   name: "CityHeader",
+  props: {
+    cities: Object,
+  },
+  data() {
+    return {
+      keywords: "",
+      list: [],
+      timer: null,
+    };
+  },
+  computed: {
+    hasNoData() {
+      return !this.list.length;
+    },
+  },
+  watch: {
+    keywords() {
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+      if (!this.keywords) {
+        this.list = [];
+        return;
+      }
+      this.timer = setTimeout(() => {
+        const result = [];
+        for (const i in this.cities) {
+          this.cities[i].forEach((value) => {
+            if (
+              value.spell.indexOf(this.keywords) > -1 ||
+              value.name.indexOf(this.keywords) > -1
+            ) {
+              result.push(value);
+            }
+          });
+        }
+        this.list = result;
+      }, 200);
+    },
+  },
+  mounted() {
+    this.scroll = new BetterScroll(this.$refs.list, { click: true });
+  },
 };
 </script>
 
@@ -47,6 +101,23 @@ export default {
     font-size: weight;
     color: white;
     margin-left: 10px;
+  }
+}
+.search-content {
+  position: absolute;
+  top: 43px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: white;
+  overflow: hidden;
+  .search-item {
+    height: 20px;
+    padding-left: 10px;
+    line-height: 20px;
+    background: white;
+    border-bottom: 1px solid lightgray;
   }
 }
 </style>
