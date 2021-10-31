@@ -4,13 +4,17 @@
       <div class="area">
         <div class="title">我的位置</div>
         <div class="location-wrapper">
-          <div class="location">{{ this.currentLocation }}</div>
+          <div class="location">{{ this.currentCity }}</div>
         </div>
       </div>
       <div class="area">
         <div class="title">热门城市</div>
         <ul class="hot-list">
-          <li v-for="hotCity in hotCities" :key="hotCity.id">
+          <li
+            v-for="hotCity in hotCities"
+            :key="hotCity.id"
+            @click="handleHotCityClick(hotCity.name)"
+          >
             {{ hotCity.name }}
           </li>
         </ul>
@@ -18,7 +22,13 @@
       <div class="area" v-for="(city, key) in cities" :key="key" :ref="key">
         <div class="title">{{ key }}</div>
         <ul class="all-list">
-          <li v-for="inner in city" :key="inner.id">{{ inner.name }}</li>
+          <li
+            v-for="inner in city"
+            :key="inner.id"
+            @click="handleHotCityClick(inner.name)"
+          >
+            {{ inner.name }}
+          </li>
         </ul>
       </div>
     </div>
@@ -27,17 +37,28 @@
 
 <script>
 import BetterScroll from "better-scroll";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "CityList",
   props: {
-    currentLocation: String,
     hotCities: Array,
     cities: Object,
     letter: String,
   },
-  mounted() {
-    this.scroll = new BetterScroll(this.$refs.wrapper, { click: true });
+  methods: {
+    handleHotCityClick(city) {
+      this.changeCity(city);
+      this.$router.push("/");
+    },
+    ...mapMutations({
+      changeCity: "changeCity", //将vuex中的changeCity映射到组件计changeCity方法中
+    }),
+  },
+  computed: {
+    ...mapState({
+      currentCity: "city", //将vuex中的city映射到组件计算属性currentCity中
+    }),
   },
   watch: {
     letter() {
@@ -47,6 +68,9 @@ export default {
         console.log(element);
       }
     },
+  },
+  mounted() {
+    this.scroll = new BetterScroll(this.$refs.wrapper, { click: true });
   },
 };
 </script>
@@ -73,7 +97,7 @@ export default {
     }
     .location {
       height: 20px;
-      width: 50px;
+      width: 60px;
       border: 1px solid $bg-color;
       padding: 5px 10px;
       line-height: 20px;
@@ -86,7 +110,6 @@ export default {
       flex-wrap: wrap;
       li {
         height: 20px;
-        width: 40px;
         border: 1px solid lightgray;
         text-align: center;
         line-height: 20px;

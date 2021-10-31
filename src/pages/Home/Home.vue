@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-header v-bind:city="city"></home-header>
+    <home-header></home-header>
     <home-swipper v-bind:list="swiperList"></home-swipper>
     <home-icons v-bind:list="iconList"></home-icons>
     <recommend v-bind:list="recommendList"></recommend>
@@ -15,17 +15,10 @@ import HomeSwipper from "./components/HomeSwiper.vue";
 import HomeIcons from "./components/HomeIcons.vue";
 import Recommend from "./components/Recommend.vue";
 import HomeWeekend from "./components/HomeWeekend.vue";
+import { mapState } from "vuex";
+
 export default {
   name: "Home",
-  data() {
-    return {
-      city: "",
-      swiperList: [],
-      iconList: [],
-      recommendList: [],
-      weekendList: [],
-    };
-  },
   components: {
     HomeHeader,
     HomeSwipper,
@@ -33,14 +26,25 @@ export default {
     Recommend,
     HomeWeekend,
   },
+  data() {
+    return {
+      swiperList: [],
+      iconList: [],
+      recommendList: [],
+      weekendList: [],
+      lastCity: "",
+    };
+  },
+  computed: {
+    ...mapState(["city"]),
+  },
   methods: {
     getHomeInfo() {
-      axios.get("/api/index.json").then(this.getHomeInfoSucc);
+      axios.get("/api/index.json?city=" + this.city).then(this.getHomeInfoSucc);
     },
     getHomeInfoSucc(res) {
       const homeIfon = res.data;
       if (homeIfon.ret && homeIfon.data) {
-        this.city = homeIfon.data.city;
         this.swiperList = homeIfon.data.swiperList;
         this.iconList = homeIfon.data.iconList;
         this.recommendList = homeIfon.data.recommendList;
@@ -50,6 +54,13 @@ export default {
   },
   mounted() {
     this.getHomeInfo();
+    this.lastCity = this.city;
+  },
+  activated() {
+    if (this.lastCity !== this.city) {
+      this.getHomeInfo();
+      this.lastCity = this.city;
+    }
   },
 };
 </script lang="scss" scoped>

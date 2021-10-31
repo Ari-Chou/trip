@@ -20,15 +20,16 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "HomeHeaer",
-  props: {
-    city: String,
-  },
   data() {
     return {
       search: "",
     };
+  },
+  computed: {
+    ...mapState(["city"]),
   },
 };
 </script>
@@ -70,7 +71,7 @@ export default {
     }
   }
   .header-right {
-    width: 60px;
+    min-width: 60px;
     line-height: 43px;
     padding: 0 5px;
     display: flex;

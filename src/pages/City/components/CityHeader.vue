@@ -11,7 +11,12 @@
     </div>
     <div class="search-content" ref="list" v-show="keywords">
       <ul>
-        <li class="search-item" v-for="city in list" :key="city.id">
+        <li
+          class="search-item"
+          v-for="city in list"
+          :key="city.id"
+          @click="handleSearchItemClick(city.name)"
+        >
           {{ city.name }}
         </li>
         <li class="search-item" v-show="hasNoData">未找到搜索目的地</li>
@@ -22,6 +27,8 @@
 
 <script>
 import BetterScroll from "better-scroll";
+import { mapMutations } from "vuex";
+
 export default {
   name: "CityHeader",
   props: {
@@ -33,6 +40,15 @@ export default {
       list: [],
       timer: null,
     };
+  },
+  methods: {
+    handleSearchItemClick(city) {
+      this.changeCity(city);
+      this.$router.push("/");
+    },
+    ...mapMutations({
+      changeCity: "changeCity",
+    }),
   },
   computed: {
     hasNoData() {

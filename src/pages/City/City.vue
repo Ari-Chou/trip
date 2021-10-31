@@ -2,7 +2,6 @@
   <div>
     <city-header v-bind:cities="cities"></city-header>
     <city-list
-      v-bind:currentLocation="currentCity"
       :hotCities="hotCities"
       :cities="cities"
       :letter="letter"
@@ -39,7 +38,6 @@ export default {
       console.log(res.data);
       const cityInfo = res.data;
       if (cityInfo.ret && cityInfo.data) {
-        this.currentCity = cityInfo.data.city;
         this.hotCities = cityInfo.data.hotCities;
         this.cities = cityInfo.data.cities;
       }
@@ -50,6 +48,9 @@ export default {
   },
   mounted() {
     axios.get("/api/city.json").then(this.getCityInfoSucc);
+  },
+  activated() {
+    console.log("actived");
   },
 };
 </script>
